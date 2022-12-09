@@ -1,0 +1,31 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.relative {
+text-align: right;
+}
+</style>
+  <meta charset="utf-8">
+  <title>{% block title %}Base School regestry{% endblock %}</title>
+<div class="relative">
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+</div>
+
+
+</head>
+<body>
+  <main>
+    {% block content %}
+
+    {% endblock %}
+  </main>
+</body>
+</html>

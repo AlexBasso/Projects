@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load rest_framework %}
+
+
+{% block content %}
+
+
+<html><body>
+
+<h1>Edit name & Grade of student from {{ scpk.first.schoolName }} from {{ clpk.first.scClassName }}:</h1>
+
+<form action="{% url 'student-detail' stpk=stpk.pk clpk=clpk.first.pk scpk=scpk.first.pk %}" method="POST">
+    {% csrf_token %}
+    {% render_form serializer %}
+    <input type="submit" value="Save">
+</form>
+
+<br><a href="{% url 'student-list' scpk=scpk.first.pk clpk=clpk.first.pk %}"> Back </a></br>
+</body></html>
+{% endblock %}

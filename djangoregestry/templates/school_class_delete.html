@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<html><body>
+<h1>Delete Class: {{ school.scClassName}} from school {{ scpk.first.schoolName}}</h1>
+
+<ul>
+Are you sure you want to
+<form action="{% url 'school_class-delete' clpk=school.pk scpk=scpk.first.pk  %}" method="POST" data-method="DELETE">
+    {% csrf_token %}
+
+    <input type="submit" value="delete"> ?
+</form>
+</ul>
+<a href="{% url 'school_class-list' scpk=scpk.first.pk %}"> Back </a>
+</body></html>
+{% endblock %}
+

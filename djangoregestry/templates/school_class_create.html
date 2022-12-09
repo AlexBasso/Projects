@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load rest_framework %}
+{% block content %}
+
+<html><body>
+
+<h1>Create Class for - {{ scpk.first.schoolName  }}</h1>
+
+<div class="offset-3 col-md-6">
+<form action="{% url 'school_class-create' scpk=scpk.first.pk  %}" method="POST">
+    <div class="form-group">
+
+    {% csrf_token %}
+    {% render_form serializer %}
+
+</div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<br><a href="{% url 'school_class-list' scpk=scpk.first.pk %}"> Back </a></br>
+</body></html>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html><body>
+<h1>List of all Schools:</h1>
+<ul>
+
+  {% for school in schools %}
+
+        <p><a href="{% url 'school_class-list' scpk=school.pk %}"><li>{{ school.schoolName }}</a> -
+            <a href="{% url 'tmp_school-detail' pk=school.pk %}">Edit School Name </a> </li> -
+            <a href="{% url 'tmp_school-delete' scpk=school.pk %}">Delete School </a> </li></p>
+
+    {% endfor %}
+
+</ul>
+
+<a href="{% url 'tmp_school-create' %}"> Create </a>
+</body></html>
+
+
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load rest_framework %}
+{% block content %}
+
+
+<html><body>
+
+<h1>Edit Class & Profeesor from ({{scpk.first.schoolName}}):</h1>
+
+<form action="{% url 'school_class-detail' clpk=school.pk scpk=scpk.first.pk %}" method="POST">
+    {% csrf_token %}
+    {% render_form serializer %}
+    <input type="submit" value="Save">
+</form>
+
+<br><a href="{% url 'school_class-list' scpk=scpk.first.pk %}"> Back </a></br>
+</body></html>
+{% endblock %}
